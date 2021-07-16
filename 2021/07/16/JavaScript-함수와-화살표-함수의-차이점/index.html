@@ -20,25 +20,30 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"kkdd0757.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="SUPER-DUPER developer">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Exploring and Experimenting with curiosity">
-<meta property="og:url" content="https://kkdd0757.github.io/index.html">
+<meta name="description" content="안녕하세요:))  오늘은 ES6에 추가된 ‘화살표 함수’에 대해서 알아보도록 하겠습니다!화살표 함수(Arrow Function)는 일반 함수와는 달리 간략히 적을수 있다는 장점을 가졌는데요, 이 화살표 함수의 특징은 무엇인지, 그리고 일반함수와의 차이는 무엇인지 알아보도록 하겠습니다!  화살표 함수(Arrow Function)이란?12345678910&#x2F;&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript : 함수와 화살표 함수의 차이점">
+<meta property="og:url" content="https://kkdd0757.github.io/2021/07/16/JavaScript-%ED%95%A8%EC%88%98%EC%99%80-%ED%99%94%EC%82%B4%ED%91%9C-%ED%95%A8%EC%88%98%EC%9D%98-%EC%B0%A8%EC%9D%B4%EC%A0%90/index.html">
 <meta property="og:site_name" content="Exploring and Experimenting with curiosity">
-<meta property="og:description" content="SUPER-DUPER developer">
+<meta property="og:description" content="안녕하세요:))  오늘은 ES6에 추가된 ‘화살표 함수’에 대해서 알아보도록 하겠습니다!화살표 함수(Arrow Function)는 일반 함수와는 달리 간략히 적을수 있다는 장점을 가졌는데요, 이 화살표 함수의 특징은 무엇인지, 그리고 일반함수와의 차이는 무엇인지 알아보도록 하겠습니다!  화살표 함수(Arrow Function)이란?12345678910&#x2F;&#x2F;">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-07-16T12:20:56.000Z">
+<meta property="article:modified_time" content="2021-07-16T13:16:43.108Z">
 <meta property="article:author" content="JJYUNG">
+<meta property="article:tag" content="js">
+<meta property="article:tag" content="자바스크립트">
+<meta property="article:tag" content="화살표 함수">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://kkdd0757.github.io/">
+<link rel="canonical" href="https://kkdd0757.github.io/2021/07/16/JavaScript-%ED%95%A8%EC%88%98%EC%99%80-%ED%99%94%EC%82%B4%ED%91%9C-%ED%95%A8%EC%88%98%EC%9D%98-%EC%B0%A8%EC%9D%B4%EC%A0%90/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"en","comments":"","permalink":"","path":"index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://kkdd0757.github.io/2021/07/16/JavaScript-%ED%95%A8%EC%88%98%EC%99%80-%ED%99%94%EC%82%B4%ED%91%9C-%ED%95%A8%EC%88%98%EC%9D%98-%EC%B0%A8%EC%9D%B4%EC%A0%90/","path":"2021/07/16/JavaScript-함수와-화살표-함수의-차이점/","title":"JavaScript : 함수와 화살표 함수의 차이점"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Exploring and Experimenting with curiosity</title>
+<title>JavaScript : 함수와 화살표 함수의 차이점 | Exploring and Experimenting with curiosity</title>
   
 
 
@@ -93,7 +98,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -106,6 +111,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%99%94%EC%82%B4%ED%91%9C-%ED%95%A8%EC%88%98-Arrow-Function-%EC%9D%B4%EB%9E%80"><span class="nav-number">1.</span> <span class="nav-text">화살표 함수(Arrow Function)이란?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%99%94%EC%82%B4%ED%91%9C-%ED%95%A8%EC%88%98-vs-%EC%9D%BC%EB%B0%98-%ED%95%A8%EC%88%98"><span class="nav-number">2.</span> <span class="nav-text">화살표 함수 vs 일반 함수</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Reference"><span class="nav-number">2.1.</span> <span class="nav-text">Reference</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -153,16 +159,17 @@
 </noscript>
 
 
-    <div class="main-inner index posts-expand">
+    <div class="main-inner post posts-expand">
 
-    
+
+  
 
 
 <div class="post-block">
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
     <link itemprop="mainEntityOfPage" href="https://kkdd0757.github.io/2021/07/16/JavaScript-%ED%95%A8%EC%88%98%EC%99%80-%ED%99%94%EC%82%B4%ED%91%9C-%ED%95%A8%EC%88%98%EC%9D%98-%EC%B0%A8%EC%9D%B4%EC%A0%90/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -175,9 +182,9 @@
       <meta itemprop="name" content="Exploring and Experimenting with curiosity">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/07/16/JavaScript-%ED%95%A8%EC%88%98%EC%99%80-%ED%99%94%EC%82%B4%ED%91%9C-%ED%95%A8%EC%88%98%EC%9D%98-%EC%B0%A8%EC%9D%B4%EC%A0%90/" class="post-title-link" itemprop="url">JavaScript : 함수와 화살표 함수의 차이점</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          JavaScript : 함수와 화살표 함수의 차이점
+        </h1>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -201,7 +208,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>안녕하세요:))</p>
+        <p>안녕하세요:))</p>
 <p> 오늘은 ES6에 추가된 ‘화살표 함수’에 대해서 알아보도록 하겠습니다!<br>화살표 함수(Arrow Function)는 일반 함수와는 달리 간략히 적을수 있다는 장점을 가졌는데요, 이 화살표 함수의 특징은 무엇인지, 그리고 일반함수와의 차이는 무엇인지 알아보도록 하겠습니다!</p>
 <hr>
 <h2 id="화살표-함수-Arrow-Function-이란"><a href="#화살표-함수-Arrow-Function-이란" class="headerlink" title="화살표 함수(Arrow Function)이란?"></a>화살표 함수(Arrow Function)이란?</h2><pre><code><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// case 1</span><br><span class="line">const delete = (a,b) =&gt; &#123;</span><br><span class="line"> 	return a-b;</span><br><span class="line">&#125;	</span><br><span class="line">        </span><br><span class="line">//case 2</span><br><span class="line">const divide = (c,d) =&gt; c/d;</span><br><span class="line"></span><br><span class="line">//case 3</span><br><span class="line">const result = x =&gt; x*2;</span><br></pre></td></tr></table></figure>
@@ -248,7 +255,6 @@
 <pre><code>- 
 </code></pre>
 
-      
     </div>
 
     
@@ -256,152 +262,27 @@
     
 
     <footer class="post-footer">
-        <div class="post-eof"></div>
-      
+          <div class="post-tags">
+              <a href="/tags/js/" rel="tag"># js</a>
+              <a href="/tags/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8/" rel="tag"># 자바스크립트</a>
+              <a href="/tags/%ED%99%94%EC%82%B4%ED%91%9C-%ED%95%A8%EC%88%98/" rel="tag"># 화살표 함수</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/07/14/welcome/" rel="prev" title="welcome">
+                  <i class="fa fa-chevron-left"></i> welcome
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
     </footer>
   </article>
 </div>
 
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://kkdd0757.github.io/2021/07/14/welcome/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JJYUNG">
-      <meta itemprop="description" content="SUPER-DUPER developer">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Exploring and Experimenting with curiosity">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/07/14/welcome/" class="post-title-link" itemprop="url">welcome</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-07-14 16:42:52 / Modified: 16:44:27" itemprop="dateCreated datePublished" datetime="2021-07-14T16:42:52+09:00">2021-07-14</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Welcome to dailyBlog! </p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://kkdd0757.github.io/2021/07/14/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JJYUNG">
-      <meta itemprop="description" content="SUPER-DUPER developer">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Exploring and Experimenting with curiosity">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/07/14/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-07-14 16:37:27" itemprop="dateCreated datePublished" datetime="2021-07-14T16:37:27+09:00">2021-07-14</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
 
 
 

@@ -20,16 +20,20 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"kkdd0757.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="SUPER-DUPER developer">
+<meta name="description" content="Computer Processing안녕하세요, 최근에 스택과 큐를 공부했는데 스택과 큐가 프로세스 실행 구조와 프로세스 스케쥴링 방&gt;식에 많이 활용이 된다고 하더라구요. 그래서 오늘은 프로세스 실행 구조에 대해서 알아보려고 합니다.자, 그러면 한번 출발해볼까요? 프로세스 실행구조우선 프로세스에 대해 말하기 전, 작업(JOB)에 대해서 말해보겠습니다.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="프로세스 실행구조 이해하기">
 <meta property="og:url" content="https://kkdd0757.github.io/2021/07/18/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EC%8B%A4%ED%96%89%EA%B5%AC%EC%A1%B0-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0/index.html">
 <meta property="og:site_name" content="Exploring and Experimenting with curiosity">
-<meta property="og:description" content="SUPER-DUPER developer">
+<meta property="og:description" content="Computer Processing안녕하세요, 최근에 스택과 큐를 공부했는데 스택과 큐가 프로세스 실행 구조와 프로세스 스케쥴링 방&gt;식에 많이 활용이 된다고 하더라구요. 그래서 오늘은 프로세스 실행 구조에 대해서 알아보려고 합니다.자, 그러면 한번 출발해볼까요? 프로세스 실행구조우선 프로세스에 대해 말하기 전, 작업(JOB)에 대해서 말해보겠습니다.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-07-18T06:45:57.000Z">
-<meta property="article:modified_time" content="2021-07-18T06:45:57.942Z">
+<meta property="article:modified_time" content="2021-07-18T07:25:24.262Z">
 <meta property="article:author" content="JJYUNG">
+<meta property="article:tag" content="프로세서">
+<meta property="article:tag" content="프로세스">
+<meta property="article:tag" content="스택">
+<meta property="article:tag" content="큐">
 <meta name="twitter:card" content="summary">
 
 
@@ -95,7 +99,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -108,6 +112,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Computer-Processing"><span class="nav-number">1.</span> <span class="nav-text">Computer Processing</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EC%8B%A4%ED%96%89%EA%B5%AC%EC%A1%B0"><span class="nav-number">1.1.</span> <span class="nav-text">프로세스 실행구조</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4%EC%9D%98-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B5%AC%EC%A1%B0"><span class="nav-number">1.1.1.</span> <span class="nav-text">프로세스의 메모리 구조</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EC%83%81%ED%83%9C"><span class="nav-number">1.1.2.</span> <span class="nav-text">프로세스 상태</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%8A%A4%EC%BC%80%EC%A4%84%EB%A7%81"><span class="nav-number">1.2.</span> <span class="nav-text">스케줄링</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -126,7 +131,7 @@
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
@@ -189,8 +194,9 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
+      
 
-      <time title="Created: 2021-07-18 15:45:57" itemprop="dateCreated datePublished" datetime="2021-07-18T15:45:57+09:00">2021-07-18</time>
+      <time title="Created: 2021-07-18 15:45:57 / Modified: 16:25:24" itemprop="dateCreated datePublished" datetime="2021-07-18T15:45:57+09:00">2021-07-18</time>
     </span>
 
   
@@ -203,7 +209,82 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        
+        <h1 id="Computer-Processing"><a href="#Computer-Processing" class="headerlink" title="Computer Processing"></a>Computer Processing</h1><p>안녕하세요, 최근에 스택과 큐를 공부했는데 스택과 큐가 프로세스 실행 구조와 프로세스 스케쥴링 방&gt;식에 많이 활용이 된다고 하더라구요. 그래서 오늘은 프로세스 실행 구조에 대해서 알아보려고 합니다.<br>자, 그러면 한번 출발해볼까요?</p>
+<h2 id="프로세스-실행구조"><a href="#프로세스-실행구조" class="headerlink" title="프로세스 실행구조"></a>프로세스 실행구조</h2><p>우선 프로세스에 대해 말하기 전, 작업(JOB)에 대해서 말해보겠습니다. 작업은 <u>프로그램과 데이터</u>를 말하는데요, 이런 작업을 하기 위해 커널(시스템)에 등록을 하게 됩니다. 커널에서 이러한 작업을<br> 관리하는 이유는 시스템의 성능을 위해서입니다. 커널에 등록된 프로그램은 커널의 관리 하에 실행되&gt;고, 각종 자원을 요청, 할당 및 반납할 수 있게 됩니다. 이 때, 프로세스라는 개념이 등장하게 됩니다. 프로세스는 <u>자원을 할당받고 제어</u>하게 되고, 이 때 프로세스 관리 블록이 생성됩니다.(프로세&gt;스 관리 블록은 OS에서 프로세스 관리에 필요한 정보를 저장하는 것을 말합니다)</p>
+<pre><code>    *** 프로세서(processor) : CPU / 프로세스 : 실행중인 프로그램
+</code></pre>
+<h3 id="프로세스의-메모리-구조"><a href="#프로세스의-메모리-구조" class="headerlink" title="프로세스의 메모리 구조"></a>프로세스의 메모리 구조</h3><ol>
+<li><p>코드 영역 : 프로그램을 실행시키는 명령어 올라감 (자원)</p>
+</li>
+<li><p>데이터 영역 : 전역 변수, static 변수 (자원)</p>
+</li>
+<li><p>힙 영역 : 동적할당을 위한 메모리영역(자원)</p>
+</li>
+<li><p>스택 영역 : 지역 변수, 함수 호출 시 전달되는 파라미터를 위한 메모리 영역</p>
+<pre><code> - 스레드 == 스레드 아이디 + 자원 + 스택 (자원은 공유하지만 제어는 달리함)
+</code></pre>
+</li>
+</ol>
+<h3 id="프로세스-상태"><a href="#프로세스-상태" class="headerlink" title="프로세스 상태"></a>프로세스 상태</h3><ol>
+<li><p>Created State : 작업을 커널에 등록</p>
+<pre><code> - 프로세스 생성 및 프로세스 관리 블록 할당
+
+ - 메모리 공간이 있나 확인
+</code></pre>
+</li>
+<li><p>메모리 공간이 있을 경우 (Active)</p>
+<pre><code> - ready : 프로세서 외의 다른 모든 자원을 할당받은 상태 (즉시 실행 가능 상태)
+
+ - running : 프로세서 + 필요한 모든 자원을 할당받은 상태
+
+ - blobked / asleep : 프로세서 외의 다른 자원을 기다리는 상태
+
+         - 서류를 잠시 빼놓고 왔을 경우 다시 가지러 간 상태라고 이해하기!
+
+         - 여기서 running으로 바로갈 수는 없음. 다시 줄을 서서 기다려야 함(ready상태로 돌
+</code></pre>
+<p>아감)</p>
+</li>
+<li><p>메모리 공간이 없을 경우 (Suspended)</p>
+<pre><code> - 이전에 했던 작업을 swap device에 저장해두고 active 상태로 돌아갔을 때 복구해 사용
+
+ - suspended ready : 프로세서가 없는 상태
+
+ - suspended block : 프로세서와 기타 자원이 없는 상태
+</code></pre>
+</li>
+<li><p>Terminated / Zombie State : 프로세스 수행이 끝난 상태에 모든 자원을 반납후 커널 내에 일부 블&gt;록 정보 (후에 활용할 수 있는 정보들)이 남아있는 상태 =&gt; 커널이 이 정보들을 수집</p>
+<h2 id="스케줄링"><a href="#스케줄링" class="headerlink" title="스케줄링"></a>스케줄링</h2></li>
+</ol>
+<p>스케줄링은 CPU(프로세서)하나일 때 동시에 여러개의 프로세스가 실행될 경우 할당 순서 및 방법을 결&gt;정하는 것을 말합니다. 이런 스케줄링을 하는 이유는 CPU 이용률 증가, 균형있는 자원 사용, 처리율 증<br>가등의 이유로 실행하게 됩니다. 스케줄링 방식은 두 가지로 나뉘게 됩니다.</p>
+<ol>
+<li>비선점 스케줄링</li>
+</ol>
+<ul>
+<li><p>프로세스에게 이미 할당된 CPU를 강제로 빼앗을 수 없고 사용이 끝날 때까지 기다려야하는 방법</p>
+</li>
+<li><p>CPU를 사용이 끝날때까지 넘겨주징나하 일괄 처리와 실시간 처리가 불가하다.</p>
+</li>
+<li><p>오버헤드(과부하)는 일어나지않는다</p>
+</li>
+<li><p>대표적인 스케줄링 : FIFO</p>
+</li>
+</ul>
+<ol start="2">
+<li>선점 스케줄링</li>
+</ol>
+<ul>
+<li><p>우선 순위가 높은 다른 프로세스가 할당된 CPU를 강제로 빼앗을 수 있는 방법</p>
+</li>
+<li><p>실시간 처리, 대화식 분할 처리 가능</p>
+</li>
+<li><p>오버헤드가 일어날 가능성이 있음</p>
+</li>
+</ul>
+<hr>
+<p>이렇게 프로세스 실행 과정에 대해서 알아보았는데 어떠신가요? 이 과정을 이해하고 스택과 큐로 넘어&gt;가게된다면 더 쉽게 이해할 수 있겠죠?</p>
+<p>오늘도 즐거운 하루 보내세요! 🥰</p>
+
     </div>
 
     
@@ -211,6 +292,12 @@
     
 
     <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%ED%94%84%EB%A1%9C%EC%84%B8%EC%84%9C/" rel="tag"># 프로세서</a>
+              <a href="/tags/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4/" rel="tag"># 프로세스</a>
+              <a href="/tags/%EC%8A%A4%ED%83%9D/" rel="tag"># 스택</a>
+              <a href="/tags/%ED%81%90/" rel="tag"># 큐</a>
+          </div>
 
         
 

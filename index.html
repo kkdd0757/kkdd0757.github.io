@@ -119,12 +119,12 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
@@ -154,6 +154,104 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://kkdd0757.github.io/2021/07/21/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-reduce-%ED%95%A8%EC%88%98%EB%9E%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JJYUNG">
+      <meta itemprop="description" content="SUPER-DUPER developer">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Exploring and Experimenting with curiosity">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/07/21/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-reduce-%ED%95%A8%EC%88%98%EB%9E%80/" class="post-title-link" itemprop="url">자바스크립트 : reduce 함수란?</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-07-21 16:43:15 / Modified: 16:56:27" itemprop="dateCreated datePublished" datetime="2021-07-21T16:43:15+09:00">2021-07-21</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>안녕하세요, 오늘은 자바스크립트의 배열 함수인 reduce에 대해서 말해보고자해요. 처음에 reduce를 봤을때는 많이 혼란스럽지만 계속 보다보면 편리하면서도 많이 활용되는 함수라고 합니다. 그럽 한번 시작해보겠습니다!</p>
+<hr>
+<h2 id="REDUCE-란"><a href="#REDUCE-란" class="headerlink" title="REDUCE() 란?"></a>REDUCE() 란?</h2><ul>
+<li><p>배열의 여러 연산을 할 때 간단하게 작성이 가능하도록 도와주는 함수</p>
+</li>
+<li><p>forEach() 보다 어떤 것을 구현하고자하는지 훨씬 명확하게 기능을 보여주는 함수</p>
+</li>
+</ul>
+<h2 id="Reduce-함수-사용법"><a href="#Reduce-함수-사용법" class="headerlink" title="Reduce 함수 사용법"></a>Reduce 함수 사용법</h2><p>reduce는 2개의 매개변수를 가질 수 있어요. 처음에는 함수가 들어가고, 여기에는 화살표 함수가 사용가능하답니다. 두 번째 매개변수는 초기값이 들어가야해요. 혹시 초기값을 잊고 적지 않았다면, 배열의 첫 번째 값이 초기값으로 들어가게 됩니다. 이 경우, 루프를 돌 때 배열을 처음부터 돌지 않습니다!</p>
+<p>이게 왜 문제가 될까요?</p>
+<p>만약 배열에 값이 들어있지 않다면 에러가 나게되기때문입니다!! 그러니 초기값을 잊지말고 꼭 넣어주세요!</p>
+<p>자, 그렇다면 함수에는 4개의 인자를 가지게됩니다. </p>
+<pre><code>- accumulator : 누적된 값의 계산 (초기값이 들어갈 자리)
+
+- current : 현재값 ( 배열에 들어있는 값을 가지고 루프를 돌 인자)
+
+- index : 현재 배열에서의 인덱스
+
+- array : 배열 그 자체 
+</code></pre>
+<p>이렇게 4가지의 인자를 함수에서 사용할 수 있답니다. </p>
+<p>자 그럼 한 번 예시를 보아요!</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> numbers = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> avg = numbers.reduce(<span class="function">(<span class="params">acc,current,index,array</span>) =&gt;</span> &#123;</span><br><span class="line">   <span class="keyword">if</span>( index === array.length-<span class="number">1</span>) &#123;</span><br><span class="line">     <span class="keyword">return</span> (acc + current) / array.length;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> acc + current;</span><br><span class="line">&#125;,<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+
+<p>위의 예시는 4개의 인자를 다 사용한 경우입니다. 배열의 초기값을 0으로 잡아주어 acc의 초기값은 0이고 current는 배열의 0번째인 1부터 돌게 됩니다. 이 때 마지막까지 더하면 전체 배열의 길이만큼 나누어주어야 평균값이 계산 되겠죠? 그걸 표현한 함수가 바로 위의 예시가 됩니다. </p>
+<h2 id="reduce의-장점"><a href="#reduce의-장점" class="headerlink" title="reduce의 장점"></a>reduce의 장점</h2><ol>
+<li><p>앞서 말했다싶이 forEach보다 훨씬 명확하게 기능을 보여줍니다</p>
+</li>
+<li><p>초기값은 숫자뿐만 아니라 {}같은 배열,객체도 가능하고, 이런 결과를 그룹화하여 보여줄 수 있습니다.</p>
+</li>
+</ol>
+<hr>
+<p>이렇게 장점이 많다보니 자바스크립트에서 reduce는 꽤 많이 활용되고있답니다.<br>오늘 코딩할때는 한 번 사용해보는건 어떤가요?</p>
+<p>오늘도 즐거운 하루 되세요!! </p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 

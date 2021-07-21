@@ -20,31 +20,30 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"kkdd0757.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="안녕하세요, 여러분!오늘은 자바스크립트에서 getter와 setter에 대해서 알아보려고 합니다! 여러분들은 getter와 setter이 필요한 이유와 어떻게 사용하시는지 알고 계신가요? 모르신다면 이번 포스팅을 통해 함께 알아보아요.  프로퍼티 데이터 프로퍼티   지금까지 사용한 (우리가 흔히 아는) 모든 프로퍼티   접근자 프로퍼티   본질은 함수  값">
+<meta name="description" content="안녕하세요, 오늘은 자바스크립트의 배열 함수인 reduce에 대해서 말해보고자해요. 처음에 reduce를 봤을때는 많이 혼란스럽지만 계속 보다보면 편리하면서도 많이 활용되는 함수라고 합니다. 그럽 한번 시작해보겠습니다!  REDUCE() 란? 배열의 여러 연산을 할 때 간단하게 작성이 가능하도록 도와주는 함수  forEach() 보다 어떤 것을 구현하고자하">
 <meta property="og:type" content="article">
-<meta property="og:title" content="자바스크립트 : Getter &amp; Setter">
-<meta property="og:url" content="https://kkdd0757.github.io/2021/07/19/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-Getter-Setter/index.html">
+<meta property="og:title" content="자바스크립트 : reduce 함수란?">
+<meta property="og:url" content="https://kkdd0757.github.io/2021/07/21/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-reduce-%ED%95%A8%EC%88%98%EB%9E%80/index.html">
 <meta property="og:site_name" content="Exploring and Experimenting with curiosity">
-<meta property="og:description" content="안녕하세요, 여러분!오늘은 자바스크립트에서 getter와 setter에 대해서 알아보려고 합니다! 여러분들은 getter와 setter이 필요한 이유와 어떻게 사용하시는지 알고 계신가요? 모르신다면 이번 포스팅을 통해 함께 알아보아요.  프로퍼티 데이터 프로퍼티   지금까지 사용한 (우리가 흔히 아는) 모든 프로퍼티   접근자 프로퍼티   본질은 함수  값">
+<meta property="og:description" content="안녕하세요, 오늘은 자바스크립트의 배열 함수인 reduce에 대해서 말해보고자해요. 처음에 reduce를 봤을때는 많이 혼란스럽지만 계속 보다보면 편리하면서도 많이 활용되는 함수라고 합니다. 그럽 한번 시작해보겠습니다!  REDUCE() 란? 배열의 여러 연산을 할 때 간단하게 작성이 가능하도록 도와주는 함수  forEach() 보다 어떤 것을 구현하고자하">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-07-19T02:18:41.000Z">
-<meta property="article:modified_time" content="2021-07-19T02:35:19.829Z">
+<meta property="article:published_time" content="2021-07-21T07:43:15.000Z">
+<meta property="article:modified_time" content="2021-07-21T07:56:27.559Z">
 <meta property="article:author" content="JJYUNG">
 <meta property="article:tag" content="js">
 <meta property="article:tag" content="자바스크립트">
-<meta property="article:tag" content="getter">
-<meta property="article:tag" content="setter">
+<meta property="article:tag" content="reduce">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://kkdd0757.github.io/2021/07/19/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-Getter-Setter/">
+<link rel="canonical" href="https://kkdd0757.github.io/2021/07/21/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-reduce-%ED%95%A8%EC%88%98%EB%9E%80/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://kkdd0757.github.io/2021/07/19/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-Getter-Setter/","path":"2021/07/19/자바스크립트-Getter-Setter/","title":"자바스크립트 : Getter & Setter"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://kkdd0757.github.io/2021/07/21/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-reduce-%ED%95%A8%EC%88%98%EB%9E%80/","path":"2021/07/21/자바스크립트-reduce-함수란/","title":"자바스크립트 : reduce 함수란?"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>자바스크립트 : Getter & Setter | Exploring and Experimenting with curiosity</title>
+<title>자바스크립트 : reduce 함수란? | Exploring and Experimenting with curiosity</title>
   
 
 
@@ -112,7 +111,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%94%84%EB%A1%9C%ED%8D%BC%ED%8B%B0"><span class="nav-number">1.</span> <span class="nav-text">프로퍼티</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GETTER%EC%99%80-SETTER%EC%9D%B4-%ED%95%84%EC%9A%94%ED%95%9C-%EC%9D%B4%EC%9C%A0"><span class="nav-number">2.</span> <span class="nav-text">GETTER와 SETTER이 필요한 이유</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%8A%B9%EC%A7%95"><span class="nav-number">3.</span> <span class="nav-text">특징</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#REDUCE-%EB%9E%80"><span class="nav-number">1.</span> <span class="nav-text">REDUCE() 란?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reduce-%ED%95%A8%EC%88%98-%EC%82%AC%EC%9A%A9%EB%B2%95"><span class="nav-number">2.</span> <span class="nav-text">Reduce 함수 사용법</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reduce%EC%9D%98-%EC%9E%A5%EC%A0%90"><span class="nav-number">3.</span> <span class="nav-text">reduce의 장점</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -171,7 +170,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://kkdd0757.github.io/2021/07/19/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-Getter-Setter/">
+    <link itemprop="mainEntityOfPage" href="https://kkdd0757.github.io/2021/07/21/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-reduce-%ED%95%A8%EC%88%98%EB%9E%80/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -184,7 +183,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          자바스크립트 : Getter & Setter
+          자바스크립트 : reduce 함수란?
         </h1>
 
         <div class="post-meta-container">
@@ -196,7 +195,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2021-07-19 11:18:41 / Modified: 11:35:19" itemprop="dateCreated datePublished" datetime="2021-07-19T11:18:41+09:00">2021-07-19</time>
+      <time title="Created: 2021-07-21 16:43:15 / Modified: 16:56:27" itemprop="dateCreated datePublished" datetime="2021-07-21T16:43:15+09:00">2021-07-21</time>
     </span>
 
   
@@ -209,38 +208,40 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>안녕하세요, 여러분!<br>오늘은 자바스크립트에서 getter와 setter에 대해서 알아보려고 합니다! 여러분들은 getter와 setter이 필요한 이유와 어떻게 사용하시는지 알고 계신가요? 모르신다면 이번 포스팅을 통해 함께 알아보아요.</p>
+        <p>안녕하세요, 오늘은 자바스크립트의 배열 함수인 reduce에 대해서 말해보고자해요. 처음에 reduce를 봤을때는 많이 혼란스럽지만 계속 보다보면 편리하면서도 많이 활용되는 함수라고 합니다. 그럽 한번 시작해보겠습니다!</p>
 <hr>
-<h2 id="프로퍼티"><a href="#프로퍼티" class="headerlink" title="프로퍼티"></a>프로퍼티</h2><ol>
-<li><b>데이터 프로퍼티</b></li>
+<h2 id="REDUCE-란"><a href="#REDUCE-란" class="headerlink" title="REDUCE() 란?"></a>REDUCE() 란?</h2><ul>
+<li><p>배열의 여러 연산을 할 때 간단하게 작성이 가능하도록 도와주는 함수</p>
+</li>
+<li><p>forEach() 보다 어떤 것을 구현하고자하는지 훨씬 명확하게 기능을 보여주는 함수</p>
+</li>
+</ul>
+<h2 id="Reduce-함수-사용법"><a href="#Reduce-함수-사용법" class="headerlink" title="Reduce 함수 사용법"></a>Reduce 함수 사용법</h2><p>reduce는 2개의 매개변수를 가질 수 있어요. 처음에는 함수가 들어가고, 여기에는 화살표 함수가 사용가능하답니다. 두 번째 매개변수는 초기값이 들어가야해요. 혹시 초기값을 잊고 적지 않았다면, 배열의 첫 번째 값이 초기값으로 들어가게 됩니다. 이 경우, 루프를 돌 때 배열을 처음부터 돌지 않습니다!</p>
+<p>이게 왜 문제가 될까요?</p>
+<p>만약 배열에 값이 들어있지 않다면 에러가 나게되기때문입니다!! 그러니 초기값을 잊지말고 꼭 넣어주세요!</p>
+<p>자, 그렇다면 함수에는 4개의 인자를 가지게됩니다. </p>
+<pre><code>- accumulator : 누적된 값의 계산 (초기값이 들어갈 자리)
+
+- current : 현재값 ( 배열에 들어있는 값을 가지고 루프를 돌 인자)
+
+- index : 현재 배열에서의 인덱스
+
+- array : 배열 그 자체 
+</code></pre>
+<p>이렇게 4가지의 인자를 함수에서 사용할 수 있답니다. </p>
+<p>자 그럼 한 번 예시를 보아요!</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> numbers = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> avg = numbers.reduce(<span class="function">(<span class="params">acc,current,index,array</span>) =&gt;</span> &#123;</span><br><span class="line">   <span class="keyword">if</span>( index === array.length-<span class="number">1</span>) &#123;</span><br><span class="line">     <span class="keyword">return</span> (acc + current) / array.length;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> acc + current;</span><br><span class="line">&#125;,<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+
+<p>위의 예시는 4개의 인자를 다 사용한 경우입니다. 배열의 초기값을 0으로 잡아주어 acc의 초기값은 0이고 current는 배열의 0번째인 1부터 돌게 됩니다. 이 때 마지막까지 더하면 전체 배열의 길이만큼 나누어주어야 평균값이 계산 되겠죠? 그걸 표현한 함수가 바로 위의 예시가 됩니다. </p>
+<h2 id="reduce의-장점"><a href="#reduce의-장점" class="headerlink" title="reduce의 장점"></a>reduce의 장점</h2><ol>
+<li><p>앞서 말했다싶이 forEach보다 훨씬 명확하게 기능을 보여줍니다</p>
+</li>
+<li><p>초기값은 숫자뿐만 아니라 {}같은 배열,객체도 가능하고, 이런 결과를 그룹화하여 보여줄 수 있습니다.</p>
+</li>
 </ol>
-<ul>
-<li>지금까지 사용한 (우리가 흔히 아는) 모든 프로퍼티</li>
-</ul>
-<ol start="2">
-<li><b>접근자 프로퍼티</b></li>
-</ol>
-<ul>
-<li><p>본질은 함수</p>
-</li>
-<li><p>값을 얻고(get) 설정(set)하는 역할을 담당</p>
-</li>
-</ul>
-<h2 id="GETTER와-SETTER이-필요한-이유"><a href="#GETTER와-SETTER이-필요한-이유" class="headerlink" title="GETTER와 SETTER이 필요한 이유"></a>GETTER와 SETTER이 필요한 이유</h2><p> 일반 데이터 프로퍼티를 사용하다보면 코드가 조금 지저분해보이고 길다고 생각해보신분 계신가요? </p>
-<p>이 때 getter와 setter을 사용하면 됩니다. 접근자 프로퍼티를 사용하면 본질은 함수이지만 프로퍼티로 보이기 때문에 (사용하기 때문에) 코드길이가 조금 줄어들고, 외부에서 값을 받아 설정을 할 수 있답니다.  </p>
-<h2 id="특징"><a href="#특징" class="headerlink" title="특징"></a>특징</h2><ul>
-<li><p>get 함수와 set 함수의 이름은 동일해도 괜찮으며 실제 값은 별도의 프로퍼티 (_함수 이름)에 저장됩니다.</p>
-<ul>
-<li>예) get 함수 이름 : name() / 실제 값 : _name</li>
-</ul>
-</li>
-<li><p>get은 파라미터가 없는 함수로, 프로퍼티를 읽을 때 작동 (값을 얻어옴)</p>
-</li>
-<li><p>set은 파라미터가 하나인 함수로, 프로퍼티에 값을 쓸 때 호출됨 (값을 설정함)</p>
-</li>
-</ul>
 <hr>
-<p>이렇게 접근자 프로퍼티인 GETTER와 SETTER에 대해 알아보았는데 어떠신가요?<br>오늘도 즐거운 하루 되세요!</p>
+<p>이렇게 장점이 많다보니 자바스크립트에서 reduce는 꽤 많이 활용되고있답니다.<br>오늘 코딩할때는 한 번 사용해보는건 어떤가요?</p>
+<p>오늘도 즐거운 하루 되세요!! </p>
 
     </div>
 
@@ -252,22 +253,18 @@
           <div class="post-tags">
               <a href="/tags/js/" rel="tag"># js</a>
               <a href="/tags/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8/" rel="tag"># 자바스크립트</a>
-              <a href="/tags/getter/" rel="tag"># getter</a>
-              <a href="/tags/setter/" rel="tag"># setter</a>
+              <a href="/tags/reduce/" rel="tag"># reduce</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/07/18/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EC%8B%A4%ED%96%89%EA%B5%AC%EC%A1%B0-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0/" rel="prev" title="프로세스 실행구조 이해하기">
-                  <i class="fa fa-chevron-left"></i> 프로세스 실행구조 이해하기
+                <a href="/2021/07/20/JavaScript-%EB%B9%84%EA%B5%AC%EC%A1%B0%ED%99%94-%ED%95%A0%EB%8B%B9%EC%9D%B4%EB%9E%80/" rel="prev" title="JavaScript: 비구조화 할당이란?">
+                  <i class="fa fa-chevron-left"></i> JavaScript: 비구조화 할당이란?
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/07/20/JavaScript-%EB%B9%84%EA%B5%AC%EC%A1%B0%ED%99%94-%ED%95%A0%EB%8B%B9%EC%9D%B4%EB%9E%80/" rel="next" title="JavaScript: 비구조화 할당이란?">
-                  JavaScript: 비구조화 할당이란? <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
